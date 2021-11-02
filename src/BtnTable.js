@@ -1,25 +1,27 @@
 import React from 'react';
+import './App.css';
+
+
 export default function BtnTable(props) {
     return(
         <div>
-
-            {(props.cond === 0) ? 
+            {(props.status === 0) ? 
         <div>
-            <button onClick={props.start}>START</button>
+            <button className="btn" onClick={props.start}>START</button>
         </div> : ''}
 
 
-            {(props.cond === 1) ?
+            {(props.status === 1) ?
         <div>
-            <button onClick={props.stop}>STOP</button>
-            <button onClick={props.reset}>RESET</button>
+            <button  className="btn" onClick={props.stop}>STOP</button>
+            <button className="btn" onClick={props.reset}>RESET</button>
         </div> : ''}
     
 
-            {(props.cond === 2) ? 
+            {(props.status === 2) ? 
         <div>
-            <button onClick={props.resume}>RESUME</button> 
-            <button onClick={props.reset}>RESET</button>
+            <button className="btn" onClick={props.resume}>RESUME</button> 
+            <button className="btn" onClick={props.reset}>RESET</button>
         </div> : ''}
         </div>     
     );

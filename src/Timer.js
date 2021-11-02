@@ -2,30 +2,30 @@
 import React, { useState } from 'react';
 import TimerTable from './TimerTable';
 import BtnTable from './BtnTable';
+import './App.css';
  
 
 
 export default function Timer() {
     const [time, setTime] = useState({hour: 0, minute: 0, second: 0});
-    const [int, setInterval] = useState(0);
-    const [status, useStatus] = useState(0);
+    const [int, setInt ] = useState();
+    const [status, setStatus] = useState(0);
 
 
     const start = () => {
         pushBtn();
-        status(1);
-        setInterval(setInterval(pushBtn, 1000));
-
-    }
+        setStatus(1);
+        setInt(setInterval(pushBtn, 1000));
+    };
     const stop = () => {
         clearInterval(int);
-        useStatus(0);
+        setStatus(2);
       
     }
     
     const reset = () => {
         clearInterval(int);
-        useStatus(0);
+        setStatus(0);
         setTime({hour:0, minute:0, second:0});
     
     }
@@ -42,13 +42,17 @@ export default function Timer() {
             currentMinute++;
             currentSecond = 0;
         }
+        currentSecond++;
         return setTime({hour:currentHour, minute:currentMinute, second:currentSecond});
     }
-    return(
-        <div>
-            <TimerTable time={time}/>
-            <BtnTable onClick={start} status={status} stop={stop} reset={reset} resume={resume}/>
-  
+    return (
+        <div className="block">
+            <div className="holder">
+                <div className="stoptimer">
+                <TimerTable time={time}/>
+                <BtnTable start={start} status={status} stop={stop} reset={reset} resume={resume}/>
+                </div>
+            </div>
         </div>
     )
 
@@ -58,7 +62,9 @@ export default function Timer() {
 
 
 
-
+// pushBtn();
+//         setStatus(1);
+//         setInt(setInterval(pushBtn, 1000));
 
 
 
